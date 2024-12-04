@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "697977787765",
+    "project_id": "mapszara",
+    "storage_bucket": "mapszara.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697977787765:android:8f925f655bc09960d22f3c",
+        "android_client_info": {
+          "package_name": "FarmZaragoza.p1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhUlnRnTt0DtOMLwu_pl7Q3DYqHzE0kcg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
