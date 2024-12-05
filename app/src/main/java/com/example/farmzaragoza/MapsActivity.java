@@ -8,6 +8,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -29,12 +30,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        String name = getIntent().getStringExtra("name");
-        double latitude = getIntent().getDoubleExtra("latitude", 0);
-        double longitude = getIntent().getDoubleExtra("longitude", 0);
+        double cityLatitude = getIntent().getDoubleExtra("cityLatitude", 0);
+        double cityLongitude = getIntent().getDoubleExtra("cityLongitude", 0);
+        ArrayList<Pharmacy> pharmacies = getIntent().getParcelableArrayListExtra("pharmacies");
 
-        LatLng pharmacyLocation = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(pharmacyLocation).title(name));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pharmacyLocation, 15));
+        LatLng cityLocation = new LatLng(cityLatitude, cityLongitude);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cityLocation, 12));
+
+        if (pharmacies != null) {
+            for (Pharmacy pharmacy : pharmacies) {
+                LatLng pharmacyLocation = new LatLng(pharmacy.getLatitude(), pharmacy.getLongitude());
+                mMap.addMarker(new MarkerOptions().position(pharmacyLocation).title(pharmacy.getName()));
+            }
+        }
     }
 }
